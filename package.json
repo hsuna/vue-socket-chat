@@ -2,7 +2,7 @@
   "name": "webpack-vue",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "hsuna",
+  "author": "Hsuna",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "vue": "^2.3.3",
-    "vue-router": "^2.3.1"
+    "vue-router": "^2.3.1",
+    "vuwe": "^0.1.5"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
