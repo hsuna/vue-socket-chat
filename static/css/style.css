@@ -1,0 +1,132 @@
+/**icon-font */
+@font-face {font-family: "iconfont";
+    src: url('../fonts/iconfont.eot?t=1496913226319'); /* IE9*/
+    src: url('../fonts/iconfont.eot?t=1496913226319#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/iconfont.woff?t=1496913226319') format('woff'), /* chrome, firefox */
+    url('../fonts/iconfont.ttf?t=1496913226319') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('../fonts/iconfont.svg?t=1496913226319#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-share_light:before { content: "\e7e0"; }
+.icon-friend_light:before { content: "\e7e3"; }
+.icon-back_android:before { content: "\e7ed"; }
+
+
+/*ȫ����ʽ*/
+.float-none {
+    float: none;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+a {
+    color: #109d59;
+}
+
+a:active {
+    color: #14c16d;
+}
+
+a.link {
+    text-decoration: underline;
+}
+
+.no-offset {
+    margin: 0;
+    padding: 0;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.flex-start {
+    align-self: flex-start;
+    -webkit-align-self: flex-start;
+}
+
+.flex-end {
+    align-self: flex-end;
+    -webkit-align-self: flex-end;
+}
+
+.clr-black {
+    color: #000;
+}
+
+.clr-red {
+    color: #ff0000;
+}
+
+.clr-orange {
+    color: #FB7B0A;
+}
+
+.clr-gray {
+    color: #777;
+}
+
+.clr-skin {
+    color: #109d59;
+}
+
+.fs-9 {
+    font-size: .9rem;
+}
+
+.fs-10 {
+    font-size: 1.0rem;
+}
+
+.fs-12 {
+    font-size: 1.2rem;
+}
+
+.fs-14 {
+    font-size: 1.4rem;
+}
+
+.fs-15 {
+    font-size: 1.5rem;
+}
+
+.fs-16 {
+    font-size: 1.6rem;
+}
+
+.fs-17 {
+    font-size: 1.7rem;
+}
+
+.fs-18 {
+    font-size: 1.8rem;
+}

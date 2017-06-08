@@ -6,11 +6,13 @@
 </template>
 
 <script>
-  export default {
-    components: {}
-  }
+    export default {
+        components: {
+        }
+    }
 </script>
 
 <style lang="scss">
-    @import "./style/style";
+  @import "./style/style";
 </style>
+
