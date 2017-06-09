@@ -1,9 +1,8 @@
 <template>
     <div class="chat-head">
         <span class="float-left"><i class="iconfont icon-back_android"></i></span>
-        群名字
+        群名字(<slot></slot>)
         <span class="float-right"><i class="iconfont icon-friend_light"></i></span>
-
     </div>
 </template>
 

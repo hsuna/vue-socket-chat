@@ -4,36 +4,59 @@
     <div class="login-head">
       <img src="/static/img/head/B001.jpg" width="100%" height="100%">
     </div>
-    <cell form>
-      <vwInput label="群昵称" input-config='{"type": "text", "placeholder": "输入2-10个字符"}'></vwInput>
-      <vwInput label="密码" input-config='{"type": "text", "placeholder": "输入2-8个字符"}'></vwInput>
-    </cell>
+    <div class="weui-cells_form weui-cells">
+      <div class="weui-cell">
+        <div class="weui-cell__hd">
+          <label class="weui-label">群昵称</label>
+        </div>
+        <div class="weui-cell__bd">
+          <input type="text" placeholder="输入2-10个字符" class="weui-input" v-model="username">
+        </div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__hd">
+          <label class="weui-label">密码</label>
+        </div>
+        <div class="weui-cell__bd">
+          <input type="text" placeholder="输入2-8个字符" class="weui-input">
+        </div>
+      </div>
+    </div>
     <div class="weui-btn-area">
-      <vwButton primary>登录</vwButton>
+      <button type="button" class="weui-btn_primary weui-btn" @click="clickButton">登录</button>
     </div>
   </div>
 </template>
 
 <script>
-  import cell from 'vuwe/src/components/cellS/cell'
-  import vwButton from 'vuwe/src/components/buttons/button'
-  import vwInput from 'vuwe/src/components/forms/input'
-
+  import userinfo from '../util/userinfo'
 
   export default {
     data() {
       return {
-
+        userid:new Date().valueOf(),
+        username:''
       }
     },
     created () {
     },
     methods: {
+      clickButton: function(val){
+        // $socket is socket.io-client instance
+        var flag = userinfo.set({
+          userid:this.userid,
+          username:this.username
+        });
+        if(flag){
+          this.$socket.emit('login', {
+            userid:this.userid,
+            username:this.username
+          });
+          this.$router.push('/');
+        }
+      }
     },
     components: {
-      cell,
-      vwButton,
-      vwInput
     }
   }
 </script>

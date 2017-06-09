@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // 引用模板
+import index from '../page/index.vue'
 import login from '../page/login.vue'
 import chat from '../page/chat.vue'
 
@@ -13,6 +14,14 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      redirect: '/index'
+    },
+    {
+      path: '/index',
+      component: index
+    },
+    {
+      path: '/login',
       component: login
     },
     {
