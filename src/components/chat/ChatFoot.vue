@@ -20,11 +20,16 @@
             }
         },
         created () {
+
         },
         methods: {
             sendClick:function(){
+                if('' == this.message.trim()){
+                    this.$toast({content: '发送信息不能为空'})
+                    return;
+                }
                 this.$emit('sendmsg', this.message);
-                console.log('a');
+                this.message = '';
             }
         },
         components: {
@@ -34,6 +39,7 @@
 <style>
     .chat-foot{
         position: fixed;
+        z-index: 3;
         left: 0;
         bottom: 0;
         width: 100%;

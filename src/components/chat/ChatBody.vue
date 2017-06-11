@@ -3,17 +3,17 @@
         <div class="chat-body-bg">
           <template v-for="chat in chats">
             <selfMsg v-if="chat.type == 'self'">
-              <img slot="head" src="/static/img/head/B001.jpg" width="100%" height="100%"/>
+              <img slot="head" :src="'./static/img/head/'+chat.userhead+'.jpg'" width="100%" height="100%"/>
               <template slot="name">我</template>
-              <template slot="msg">{{chat.msg}}</template>
+              <template slot="msg">{{chat.content}}</template>
             </selfMsg>
             <otherMsg v-if="chat.type == 'other'">
-              <img slot="head" src="/static/img/head/B001.jpg" width="100%" height="100%"/>
-              <template slot="name">{{chat.name}}</template>
-              <template slot="msg">{{chat.msg}}</template>
+              <img slot="head" :src="'./static/img/head/'+chat.userhead+'.jpg'" width="100%" height="100%"/>
+              <template slot="name">{{chat.username}}</template>
+              <template slot="msg">{{chat.content}}</template>
             </otherMsg>
-            <systemMsg v-if="chat.type == 'system'">
-              {{chat.name}}
+            <systemMsg v-if="chat.type == 'system'" :status="chat.status">
+              <template slot="name">{{chat.name}}</template>
             </systemMsg>
           </template>
         </div>
@@ -52,6 +52,8 @@
   .chat-body-bg{
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
     padding: 1rem 0;
     background-color: #F2F2F2;
   }

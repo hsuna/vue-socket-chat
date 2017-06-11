@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h1 class="login-title">Hsuna聊天室</h1>
-    <div class="login-head">
-      <img src="/static/img/head/B001.jpg" width="100%" height="100%">
+    <div class="login-title">
+      <img class="" :src="'./static/img/title/'+title+'.jpg'" width="100%">
+    </div>
+    <div class="login-head" >
+      <img :src="'./static/img/head/'+user.userhead+'.jpg'" width="100%" height="100%" @click="headClick">
     </div>
     <div class="weui-cells_form weui-cells">
       <div class="weui-cell">
@@ -10,20 +12,20 @@
           <label class="weui-label">群昵称</label>
         </div>
         <div class="weui-cell__bd">
-          <input type="text" placeholder="输入2-10个字符" class="weui-input" v-model="username">
+          <input type="text" placeholder="输入2-10个字符" class="weui-input" v-model="user.username">
         </div>
       </div>
-      <div class="weui-cell">
+      <!--<div class="weui-cell">
         <div class="weui-cell__hd">
           <label class="weui-label">密码</label>
         </div>
         <div class="weui-cell__bd">
           <input type="text" placeholder="输入2-8个字符" class="weui-input">
         </div>
-      </div>
+      </div>-->
     </div>
     <div class="weui-btn-area">
-      <button type="button" class="weui-btn_primary weui-btn" @click="clickButton">登录</button>
+      <button type="button" class="weui-btn_primary weui-btn" @click="loginClick">登录</button>
     </div>
   </div>
 </template>
@@ -31,29 +33,38 @@
 <script>
   import userinfo from '../util/userinfo'
 
+  function getTitleSrc(){
+    let tmpStr = '000' + Math.floor(Math.random() * 9 + 1);
+    return tmpStr.substr(-3, 3);
+  }
+
   export default {
     data() {
       return {
-        userid:new Date().valueOf(),
-        username:''
+        title:getTitleSrc(),
+        user:{
+          userhead:userinfo.getNewUserHead(),
+          userid:userinfo.getNewUserId(),
+          username:'',
+        }
       }
     },
     created () {
     },
     methods: {
-      clickButton: function(val){
+      loginClick: function(val){
         // $socket is socket.io-client instance
-        var flag = userinfo.set({
-          userid:this.userid,
-          username:this.username
-        });
-        if(flag){
-          this.$socket.emit('login', {
-            userid:this.userid,
-            username:this.username
-          });
-          this.$router.push('/');
+        if('' == this.user.username.trim()){
+          this.$toast({content: '群昵称不能为空'})
+          return;
         }
+        let flag = userinfo.set(this.user);
+        if(flag){
+          this.$socket.emit('login', userinfo.get());
+        }
+      },
+      headClick: function(){
+        this.user.userhead = userinfo.getNewUserHead();
       }
     },
     components: {
@@ -63,12 +74,12 @@
 
 <style>
   .login-title{
+    margin: 4rem 5rem 3rem 5rem;
     text-align: center;
-    margin: 6rem;
   }
   .login-head{
-    width: 10rem;
-    height: 10rem;
-    margin: 8rem auto 2rem auto;
+    width: 9rem;
+    height: 9rem;
+    margin: 2rem auto;
   }
 </style>

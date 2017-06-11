@@ -1,13 +1,17 @@
 <template>
   <div class="sys-wrap">
     <div class="sys-wrap-msg">
-      <slot></slot> 加入群聊
+        <slot name="name"></slot>
+        <template v-if="status=='1'">加入群聊</template>
+        <template v-if="status=='0'">退出群聊</template>
     </div>
   </div>
 </template>
 
 <script>
-
+    export default {
+        props:["status"]
+    }
 </script>
 
 <style>
