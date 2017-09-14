@@ -1,76 +1,76 @@
-// ÅäÖÃAPI½Ó¿ÚµØÖ·
+// é…ç½®APIæ¥å£åœ°å€
 var root = 'https://cnodejs.org/api/v1';
-// ÒıÓÃsuperagent
+// å¼•ç”¨superagent
 var request = require('superagent');
-// ×Ô¶¨ÒåÅĞ¶ÏÔªËØÀàĞÍJS
+// è‡ªå®šä¹‰åˆ¤æ–­å…ƒç´ ç±»å‹JS
 function toType(obj) {
-    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 }
-// ²ÎÊı¹ıÂËº¯Êı
+// å‚æ•°è¿‡æ»¤å‡½æ•°
 function filter_null(o) {
-    for (var key in o) {
-        if (o[key] == null) {
-            delete o[key]
-        }
-        if (toType(o[key]) == 'string') {
-            o[key] = o[key].trim()
-            if (o[key].length == 0) {
-                delete o[key]
-            }
-        }
+  for (var key in o) {
+    if (o[key] == null) {
+      delete o[key]
     }
-    return o
+    if (toType(o[key]) == 'string') {
+      o[key] = o[key].trim()
+      if (o[key].length == 0) {
+        delete o[key]
+      }
+    }
+  }
+  return o
 }
 /*
- ½Ó¿Ú´¦Àíº¯Êı
- Õâ¸öº¯ÊıÃ¿¸öÏîÄ¿¶¼ÊÇ²»Ò»ÑùµÄ£¬ÎÒÏÖÔÚµ÷ÕûµÄÊÇÊÊÓÃÓÚ
- https://cnodejs.org/api/v1 µÄ½Ó¿Ú£¬Èç¹ûÊÇÆäËû½Ó¿Ú
- ĞèÒª¸ù¾İ½Ó¿ÚµÄ²ÎÊı½øĞĞµ÷Õû¡£²Î¿¼ËµÃ÷ÎÄµµµØÖ·£º
+ æ¥å£å¤„ç†å‡½æ•°
+ è¿™ä¸ªå‡½æ•°æ¯ä¸ªé¡¹ç›®éƒ½æ˜¯ä¸ä¸€æ ·çš„ï¼Œæˆ‘ç°åœ¨è°ƒæ•´çš„æ˜¯é€‚ç”¨äº
+ https://cnodejs.org/api/v1 çš„æ¥å£ï¼Œå¦‚æœæ˜¯å…¶ä»–æ¥å£
+ éœ€è¦æ ¹æ®æ¥å£çš„å‚æ•°è¿›è¡Œè°ƒæ•´ã€‚å‚è€ƒè¯´æ˜æ–‡æ¡£åœ°å€ï¼š
  https://cnodejs.org/topic/5378720ed6e2d16149fa16bd
  */
 function _api_base(method, url, params, success, failure) {
-    var r = request(method, url).type('text/plain')
-    if (params) {
-        params = filter_null(params);
-        if (method === 'POST' || method === 'PUT') {
-            if (toType(params) == 'object') {
-                params = JSON.stringify(params);
-            }
-            r = r.send(params)
-        } else if (method == 'GET' || method === 'DELETE') {
-            r = r.query(params)
-        }
+  var r = request(method, url).type('text/plain')
+  if (params) {
+    params = filter_null(params);
+    if (method === 'POST' || method === 'PUT') {
+      if (toType(params) == 'object') {
+        params = JSON.stringify(params);
+      }
+      r = r.send(params)
+    } else if (method == 'GET' || method === 'DELETE') {
+      r = r.query(params)
     }
-    r.end(function(err, res) {
-        if (err) {
-            alert('api error, HTTP CODE: ' + res.status);
-            return;
-        };
-        if (res.body.success == true) {
-            if (success) {
-                success(res.body);
-            }
-        } else {
-            if (failure) {
-                failure(res.body);
-            } else {
-                alert('error: ' + JSON.stringify(res.body));
-            }
-        }
-    });
+  }
+  r.end(function(err, res) {
+    if (err) {
+      alert('api error, HTTP CODE: ' + res.status);
+      return;
+    };
+    if (res.body.success == true) {
+      if (success) {
+        success(res.body);
+      }
+    } else {
+      if (failure) {
+        failure(res.body);
+      } else {
+        alert('error: ' + JSON.stringify(res.body));
+      }
+    }
+  });
 };
-// ·µ»ØÔÚvueÄ£°åÖĞµÄµ÷ÓÃ½Ó¿Ú
+// è¿”å›åœ¨vueæ¨¡æ¿ä¸­çš„è°ƒç”¨æ¥å£
 export default {
-    get: function(url, params, success, failure) {
-        return _api_base('GET', root + '/' + url, params, success, failure)
-    },
-    post: function(url, params, success, failure) {
-        return _api_base('POST', root + '/' + url, params, success, failure)
-    },
-    put: function(url, params, success, failure) {
-        return _api_base('PUT', root + '/' + url, params, success, failure)
-    },
-    delete: function(url, params, success, failure) {
-        return _api_base('DELETE', root + '/' + url, params, success, failure)
-    },
+  get: function(url, params, success, failure) {
+    return _api_base('GET', root + '/' + url, params, success, failure)
+  },
+  post: function(url, params, success, failure) {
+    return _api_base('POST', root + '/' + url, params, success, failure)
+  },
+  put: function(url, params, success, failure) {
+    return _api_base('PUT', root + '/' + url, params, success, failure)
+  },
+  delete: function(url, params, success, failure) {
+    return _api_base('DELETE', root + '/' + url, params, success, failure)
+  },
 }
