@@ -3,47 +3,6 @@
  * Copyright 2017 Tencent, Inc.
  * Licensed under the MIT license
  */
-html {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  font-size: 62.5%;
-}
-@media only screen and (min-width: 375px){
-  html {
-    font-size: 73%!important;
-  }
-}
-@media only screen and (min-width: 414px){
-  html {
-    font-size: 81%!important;
-  }
-}
-@media only screen and (min-width: 481px){
-  html {
-    font-size: 94%!important;
-  }
-}
-@media only screen and (min-width: 561px){
-  html {
-    font-size: 109%!important;
-  }
-}
-@media only screen and (min-width: 641px){
-  html {
-    font-size: 125%!important;
-  }
-}
-
-body {
-  font-size: 1.4rem;
-  line-height: 1.6;
-  font-family: -apple-system-font, "Microsoft YaHei",  "Helvetica Neue", sans-serif;
-}
-
-input, textarea, keygen, select, button{
-  font-family: -apple-system-font, "Microsoft YaHei",  "Helvetica Neue", sans-serif;
-}
-
 * {
   margin: 0;
   padding: 0;

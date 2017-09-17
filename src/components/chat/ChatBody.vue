@@ -47,7 +47,7 @@
     left: 0;
     top: 0;
     padding-top: 3.7rem;
-    padding-bottom: 4.2rem;
+    padding-bottom: 4.8rem;
   }
   .chat-body-bg{
     width: 100%;

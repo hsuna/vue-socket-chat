@@ -1,4 +1,20 @@
 /**icon-font */
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-size: 3.125vw;
+}
+
+body {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  font-family: -apple-system-font, "Microsoft YaHei",  "Helvetica Neue", sans-serif;
+}
+
+input, textarea, keygen, select, button{
+  font-family: -apple-system-font, "Microsoft YaHei",  "Helvetica Neue", sans-serif;
+}
+
 @font-face {font-family: "iconfont";
     src: url('../fonts/iconfont.eot?t=1496913226319'); /* IE9*/
     src: url('../fonts/iconfont.eot?t=1496913226319#iefix') format('embedded-opentype'), /* IE6-IE8 */
